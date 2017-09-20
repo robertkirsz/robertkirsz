@@ -1,0 +1,61 @@
+$green:      #60D7A9;
+$orange:     #FDC162;
+$red:        #FD6A62;
+$blue:       #0AC2D2;
+$light-blue: #7BB7FA;
+
+$time: 0.7s;
+
+@mixin flex($flex-direction: row, $flex-wrap: nowrap, $justify-content: flex-start, $align-items: stretch, $align-content: stretch) {
+  display: flex;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  align-content: $align-content;
+}
+@mixin inline-flex($flex-direction: row, $flex-wrap: nowrap, $justify-content: flex-start, $align-items: stretch, $align-content: stretch) {
+  display: inline-flex;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  align-content: $align-content;
+}
+
+@mixin phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+
+%flex-center {
+  @include flex(column, nowrap, center, center);
+}
+
+%inline-flex-center {
+  @include inline-flex(column, nowrap, center, center);
+}
+
+%temp-font {
+  font-size: 5em;
+  color: rgba(black, 0.1);
+}
+
+%absolute {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+%transition { transition: all $time; }
+%full-size { width: 100vw; height: 100vh; }

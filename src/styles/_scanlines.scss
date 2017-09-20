@@ -1,0 +1,52 @@
+// width of 1 scanline (min.: 1px)
+$scan-width: 2px;
+
+// emulates a damage-your-eyes bad pre-2000 CRT screen ♥ (true, false)
+$scan-crt: true;
+
+// frames-per-second (should be > 1), only applies if $scan-crt: true;
+$scan-fps: 60;
+
+// scanline-color (rgba)
+$scan-color: rgba(#000, .3);
+
+// opacity of the moving scanline
+$scan-opacity: .4;
+
+.scanlines {
+  position: relative;
+  overflow: hidden; // only to animate the unique scanline
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    pointer-events: none;
+  }
+  // unique scanline travelling on the screen
+  &:before {
+    position: absolute;
+    bottom: 100%;
+    width: 100%; height: $scan-width * 1;
+    background: $scan-color;
+    opacity: $scan-opacity;
+    animation: scanline 6s linear infinite;
+    z-index: 11;
+  }
+  // the scanlines, so!
+  &:after {
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(to bottom, transparent 50%, $scan-color 51%);
+    background-size: 100% $scan-width * 2;
+    animation: scanlines 1s steps($scan-fps) infinite;
+    z-index: 10;
+  }
+}
+
+@keyframes scanline {
+  0% { bottom: 0%; }
+}
+
+@keyframes scanlines {
+    0% { background-position: 0 50%; }
+}
