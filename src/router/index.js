@@ -2,13 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import IntroPage from '@/pages/IntroPage'
-import NavigationPage from '@/pages/NavigationPage'
-import MePage from '@/pages/MePage'
-import SkillsPage from '@/pages/SkillsPage'
-import WorksPage from '@/pages/WorksPage'
-import WorkPage from '@/pages/WorkPage'
-import ContactPage from '@/pages/ContactPage'
-import NotFoundPage from '@/pages/NotFoundPage'
+const NavigationPage = cb => require(['@/pages/NavigationPage'], cb)
+const MePage = cb => require(['@/pages/MePage'], cb)
+const SkillsPage = cb => require(['@/pages/SkillsPage'], cb)
+const WorksPage = cb => require(['@/pages/WorksPage'], cb)
+const WorkPage = cb => require(['@/pages/WorkPage'], cb)
+const ContactPage = cb => require(['@/pages/ContactPage'], cb)
 
 Vue.use(Router)
 
@@ -60,13 +59,8 @@ export default new Router({
       meta: { routeIndex: 4 }
     },
     {
-      path: '/index.html',
-      redirect: '/'
-    },
-    {
       path: '*',
-      name: 'Not Found',
-      component: NotFoundPage
+      redirect: '/'
     }
   ]
 })
