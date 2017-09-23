@@ -1,11 +1,66 @@
+@import "variables";
+@import "animations";
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 * { box-sizing: border-box; }
 
-body, html { height: 100vh; }
+// body, html { height: 100vh; }
 
-body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+@mixin border-top-bottom {
+	border-bottom: 1px solid rgba(black, 0.4);
+	border-top: 1px solid rgba(white, 0.4);
+}
+
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+body  {
+	// font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	font: 16px 'Nunito', sans-serif;
+	background: #EDEDED;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #333;
-  background: #333;
+}
+
+.navbar-default .navbar-nav > li > a {
+	&:focus {
+		color: #777;
+	}
+	&:hover {
+		color: #333;
+	}
+}
+
+/* Small devices (tablets, less than 992px) */
+@media screen and (max-width: 991px) {
+	.tag {
+    padding: 10px;
+	}
+	#main_contact .form {
+		margin-top: 15px;
+		margin-bottom: 15px;
+		.form-group:nth-child(4) {
+			margin-bottom: 15px;
+		}
+	}
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media screen and (max-width: 767px) {
+	#main_cover, #main_work, .skills-page, #main_contact {
+		position: absolute;
+		background-color: #EDEDED;
+		width: 100%;
+		top: 50px; left: 0;
+		&.front { z-index: 10; }
+		&.oldfront { z-index: 9; }
+	}
+	#main_cover {	height: calc(100vh - 50px); }
 }

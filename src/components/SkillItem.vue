@@ -1,5 +1,8 @@
 <template>
-  <div class="skill" :style="style" :title="skill.name" />
+  <div class="skill col-xs-6 col-md-4">
+    <img :src="`../../static/skills/${skill.icon}`" :alt="`Logo ${skill.name}`" />
+    <p>{{ skill.name }}</p>
+  </div>
 </template>
 
 <script>
@@ -7,47 +10,58 @@
     name: 'SkillItem',
     props: {
       skill: Object
-    },
-    data () {
-      return {
-        style: `background-image: url(../../static/skills/${this.skill.icon})`
-      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/variables";
-
-  $horizontalMargin: 20px;  // TODO: This also appears in SkillsPage - put it in one place
-
   .skill {
-    @extend %transition;
-    $itemsNumber: 3;
-    $size: (calc((100vw - #{$horizontalMargin * 2}) / #{$itemsNumber}));
-    width: $size; height: $size;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    @include tablet-portrait-up {
-      $itemsNumber: 4;
-      $size: (calc((100vw - #{$horizontalMargin * 2}) / #{$itemsNumber}));
-      width: $size; height: $size;
-    };
-    @include tablet-landscape-up {
-      $itemsNumber: 5;
-      $size: (calc((100vw - #{$horizontalMargin * 2}) / #{$itemsNumber}));
-      width: $size; height: $size;
-    };
-    @include desktop-up {
-      $itemsNumber: 6;
-      $size: (calc((100vw - #{$horizontalMargin * 2}) / #{$itemsNumber}));
-      width: $size; height: $size;
-      max-width: 150px; max-height: 150px;
-    };
-    &:hover {
-      transform: scale(1.2);
-      filter: drop-shadow(2px 2px 5px darken($orange, 35%));
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    @media screen and (min-width: 992px) {
+      img:hover + p {
+        opacity: 1;
+        transform: translate3d(-50%, 0, 0) rotate3d(0, 0, 0, 0);
+      }
+    }
+
+    p {
+      position: relative;
+      margin-top: 15px;
+      top: 100%;
+      padding: 0.9em 1.5em;
+      background: #fafafa;
+      box-shadow: 0 3px #d9d9d9;
+      white-space: nowrap;
+      &:before {
+        content: "";
+        position: absolute;
+        background: #fafafa;
+        display: block;
+        width: 20px; height: 20px;
+        top: -5px;
+        left: 50%;
+        margin-left: -10px;
+        transform: rotate(45deg);
+        z-index: -1;
+      }
+
+      @media screen and (min-width: 992px) {
+        position: absolute;
+        left: 50%;
+        margin-top: 5px;
+        transform: translate3d(-50%, 10px, 0) rotate3d(1, 1, 0, 25deg);
+        opacity: 0;
+        transition: opacity 0.2s, transform 0.2s;
+        pointer-events: none;
+        z-index: 999;
+      }
     }
   }
 </style>

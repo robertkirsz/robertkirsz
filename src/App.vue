@@ -62,7 +62,6 @@
 </script>
 
 <style lang="scss">
-  @import "styles/animations";
   @import "styles/main";
 
   #app {
@@ -74,10 +73,17 @@
     overflow: hidden;
   }
 
+  .tag {
+  	color: #777;
+    margin: 20px 0;
+    font-size: 2em;
+    font-family: monospace;
+  }
+
   .page {
     @extend %absolute;
     @extend %full-size;
-    @extend %temp-font;
+    // @extend %temp-font;
     @include flex(column, nowrap, center, center);
     &:after {
       content: "";
