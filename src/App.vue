@@ -28,7 +28,7 @@
         title: 'Robert Kirsz',
         showPageNavigation: this.$route.path !== '/' && this.$route.path !== '/nav',
         routerAnimationName: null, // Used to determine animation direction
-        debug: false // Shows media queries
+        debug: true // Shows media queries
       }
     },
     watch: {

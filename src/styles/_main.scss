@@ -51,16 +51,3 @@ body  {
 		}
 	}
 }
-
-/* Extra small devices (phones, less than 768px) */
-@media screen and (max-width: 767px) {
-	#main_cover, #main_work, .skills-page, #main_contact {
-		position: absolute;
-		background-color: #EDEDED;
-		width: 100%;
-		top: 50px; left: 0;
-		&.front { z-index: 10; }
-		&.oldfront { z-index: 9; }
-	}
-	#main_cover {	height: calc(100vh - 50px); }
-}

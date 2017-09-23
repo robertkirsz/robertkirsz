@@ -1,5 +1,5 @@
 <template>
-  <div class="skill col-xs-6 col-md-4">
+  <div class="skill col-xs-6 col-md-4" :class="skill.level">
     <img :src="`../../static/skills/${skill.icon}`" :alt="`Logo ${skill.name}`" />
     <p>{{ skill.name }}</p>
   </div>
@@ -63,5 +63,20 @@
         z-index: 999;
       }
     }
+  }
+
+  .primary {
+    img { height: 140px; }
+    p { font-size: 1.2em;	}
+  }
+
+  .secondary {
+    img { height: 120px; }
+    p { font-size: 1em;	}
+  }
+
+  .other {
+    img { height: 100px; }
+    p { font-size: 0.9em;	}
   }
 </style>
