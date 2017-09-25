@@ -1,64 +1,72 @@
 <template>
   <transition name="fade-in" appear>
     <div id="app">
-      <media-queries v-if="debug" />
       <transition name="page-navigation-animation">
         <page-navigation v-if="showPageNavigation" />
       </transition>
+
       <transition :name="routerAnimationName">
         <router-view />
       </transition>
+
+      <media-queries />
+      <keyboard-handler />
     </div>
   </transition>
 </template>
 
 <script>
-  import _capitalize from 'lodash/capitalize'
-  import MediaQueries from '@/components/MediaQueries'
-  import PageNavigation from '@/components/PageNavigation'
+import _capitalize from 'lodash/capitalize'
+import MediaQueries from '@/components/MediaQueries'
+import PageNavigation from '@/components/PageNavigation'
+import KeyboardHandler from './KeyboardHandler'
 
-  export default {
-    name: 'App',
-    components: {
-      MediaQueries,
-      PageNavigation
+export default {
+  name: 'App',
+  components: { MediaQueries, PageNavigation, KeyboardHandler },
+  data () {
+    return {
+      routerAnimationName: null // Used to determine animation direction
+    }
+  },
+  computed: {
+    showPageNavigation () {
+      return this.$route.path !== '/' && this.$route.path !== '/nav'
+    }
+  },
+  mounted () {
+    this.updateTitle()
+  },
+  methods: {
+    updateTitle () {
+      document.title = this.showPageNavigation
+        ? `robertkirsz - ${_capitalize(this.$route.name)}`
+        : 'robertkirsz'
     },
-    data () {
-      return {
-        title: 'Robert Kirsz',
-        showPageNavigation: this.$route.path !== '/' && this.$route.path !== '/nav',
-        routerAnimationName: null, // Used to determine animation direction
-        debug: true // Shows media queries
-      }
-    },
-    watch: {
-      '$route' (to, from) {
-        // Determine whether to show page navigation
-        this.showPageNavigation = to.path !== '/' && to.path !== '/nav'
-        // Update document title
-        this.title = this.showPageNavigation
-          ? `Robert Kirsz - ${_capitalize(to.path.substr(1))}`
-          : 'Robert Kirsz'
-
-        // Determine animation direction based on route indexes
-        if (from.name === 'Navigation' && to.meta.routeIndex > 0) {
-          this.routerAnimationName = 'router-animation-fade'
-        } else {
-          this.routerAnimationName =
-            to.meta.routeIndex < 1
-              ? to.meta.routeIndex < from.meta.routeIndex
-                ? 'router-animation-top'
-                : 'router-animation-bottom'
-              : to.meta.routeIndex < from.meta.routeIndex
-                ? 'router-animation-left'
-                : 'router-animation-right'
-        }
-      },
-      title (value) {
-        document.title = value
+    getAnimationName (to, from) {
+      if (from.name === 'Navigation' && to.meta.routeIndex > 0) {
+        this.routerAnimationName = 'router-animation-fade'
+      } else if (from.name === 'Intro' && to.meta.routeIndex > 0) {
+        this.routerAnimationName = 'router-animation-bottom'
+      } else {
+        this.routerAnimationName =
+          to.meta.routeIndex < 1
+            ? to.meta.routeIndex < from.meta.routeIndex
+              ? 'router-animation-top'
+              : 'router-animation-bottom'
+            : to.meta.routeIndex < from.meta.routeIndex
+              ? 'router-animation-left'
+              : 'router-animation-right'
       }
     }
+  },
+  watch: {
+    $route (to, from) {
+      this.updateTitle()
+      this.getAnimationName(to, from)
+    }
   }
+}
 </script>
 
 <style lang="scss">

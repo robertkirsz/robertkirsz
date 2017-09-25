@@ -4,7 +4,7 @@ $red:        #FD6A62;
 $blue:       #0AC2D2;
 $light-blue: #7BB7FA;
 
-$time: 0.7s;
+$time: 0.5s;
 
 @mixin flex($flex-direction: row, $flex-wrap: nowrap, $justify-content: flex-start, $align-items: stretch, $align-content: stretch) {
   display: flex;
