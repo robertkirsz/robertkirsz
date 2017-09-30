@@ -9,7 +9,6 @@
         <router-view />
       </transition>
 
-      <media-queries />
       <keyboard-handler />
     </div>
   </transition>
@@ -17,13 +16,12 @@
 
 <script>
 import _capitalize from 'lodash/capitalize'
-import MediaQueries from '@/components/MediaQueries'
 import PageNavigation from '@/components/PageNavigation'
 import KeyboardHandler from './KeyboardHandler'
 
 export default {
   name: 'App',
-  components: { MediaQueries, PageNavigation, KeyboardHandler },
+  components: { PageNavigation, KeyboardHandler },
   data () {
     return {
       routerAnimationName: null // Used to determine animation direction

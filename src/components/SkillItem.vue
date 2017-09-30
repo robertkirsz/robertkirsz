@@ -15,6 +15,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../styles/variables";
+
   .skill {
     position: relative;
     display: flex;
@@ -24,7 +26,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
 
-    @media screen and (min-width: 992px) {
+    @include medium {
       img:hover + p {
         opacity: 1;
         transform: translate3d(-50%, 0, 0) rotate3d(0, 0, 0, 0);
@@ -51,7 +53,7 @@
         z-index: -1;
       }
 
-      @media screen and (min-width: 992px) {
+      @include large {
         position: absolute;
         top: 100%;
         left: 50%;

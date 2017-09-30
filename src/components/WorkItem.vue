@@ -34,17 +34,17 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    @include tablet-portrait-up {
+    @include small {
       $itemsNumber: 4;
       $size: (calc((100vw - #{$horizontalMargin * 2}) / #{$itemsNumber}));
       width: $size; height: $size;
     };
-    @include tablet-landscape-up {
+    @include medium {
       $itemsNumber: 5;
       $size: (calc((100vw - #{$horizontalMargin * 2}) / #{$itemsNumber}));
       width: $size; height: $size;
     };
-    @include desktop-up {
+    @include large {
       $itemsNumber: 6;
       $size: (calc((100vw - #{$horizontalMargin * 2}) / #{$itemsNumber}));
       width: $size; height: $size;
