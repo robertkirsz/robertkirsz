@@ -34,7 +34,6 @@
     p {
       position: relative;
       margin-top: 15px;
-      top: 100%;
       padding: 0.9em 1.5em;
       background: #fafafa;
       box-shadow: 0 3px #d9d9d9;
@@ -54,6 +53,7 @@
 
       @media screen and (min-width: 992px) {
         position: absolute;
+        top: 100%;
         left: 50%;
         margin-top: 5px;
         transform: translate3d(-50%, 10px, 0) rotate3d(1, 1, 0, 25deg);

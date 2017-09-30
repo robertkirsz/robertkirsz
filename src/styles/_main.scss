@@ -1,10 +1,9 @@
 @import "variables";
 @import "animations";
+@import "grid";
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 * { box-sizing: border-box; }
-
-// body, html { height: 100vh; }
 
 @mixin border-top-bottom {
 	border-bottom: 1px solid rgba(black, 0.4);

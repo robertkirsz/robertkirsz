@@ -91,7 +91,6 @@ export default {
   .page {
     @extend %absolute;
     @extend %full-size;
-    // @extend %temp-font;
     @include flex(column, nowrap, center, center);
     &:after {
       content: "";
@@ -99,6 +98,13 @@ export default {
       position: fixed;
       right: 0; bottom: 0; left: 0;
       height: 150px;
+      background: linear-gradient(to top, #ededed 25%, transparent);
+    }
+
+    .content {
+      width: 100%;
+      padding-bottom: 120px;
+      overflow-y: auto;
     }
   }
 

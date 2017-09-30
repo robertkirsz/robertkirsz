@@ -1,13 +1,15 @@
 <template>
   <div class="page skills-page">
     <div class="content">
+
       <div class="container">
-        <h2 class="tag rk">&lt;skills&gt;</h2>
+        <h1 class="tag">&lt;skills&gt;</h1>
       </div>
-      <div v-for="level in skillLevels" :key="level">
-        <div class="row" :class="level">
-          <div class="container">
-            <h2>&lt;{{ level }}&gt;</h2>
+
+      <section v-for="level in skillLevels" :class="level">
+        <div class="container">
+          <h2>&lt;{{ level }}&gt;</h2>
+          <div class="row">
             <skill-item
               v-for="skill in skills.filter(skill => skill.level === level)"
               :skill="skill"
@@ -15,7 +17,8 @@
             />
           </div>
         </div>
-      </div>
+      </section>
+
     </div>
   </div>
 </template>
@@ -38,30 +41,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .skills-page {
-    &:after {
-      background: linear-gradient(to top, #ededed 25%, transparent);
-    }
-
-    .content {
-      width: 100%;
-      padding-bottom: 120px;
-      overflow-y: auto;
-    }
-
-    .row {
-      margin: 0 0 10px;
+    section {
       padding-bottom: 20px;
       background: rgba(#fafafa, .25);
       box-shadow: 0 3px #d9d9d9;
-
-      h2 {
-        color: #777;
-        font-family: monospace;
-        font-size: 1.5em;
-        margin: 15px;
-      }
+    }
+    h2 {
+      color: #777;
+      font-family: monospace;
+      font-size: 1.5em;
+      padding: 15px;
+      margin: 0;
     }
   }
 </style>
