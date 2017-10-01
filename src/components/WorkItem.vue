@@ -52,7 +52,7 @@
     };
     &:hover {
       transform: scale(1.2);
-      filter: drop-shadow(2px 2px 5px darken($orange, 35%));
+      filter: drop-shadow(2px 2px 5px darken($grey, 35%));
     }
   }
 </style>

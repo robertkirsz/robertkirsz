@@ -21,9 +21,8 @@ html {
 }
 
 body  {
-	// font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	font: 16px 'Nunito', sans-serif;
-	background: #EDEDED;
+	background: $grey;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -19,6 +19,6 @@
   @import "../styles/variables";
 
   .me-page {
-    background: $green;
+    background: $grey;
   }
 </style>

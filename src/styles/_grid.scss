@@ -40,7 +40,7 @@
     width: 1420px;
 
     @for $i from 1 through 12 {
-      .col-lg-#{$i} { grid-column: span #{$i}; }
+      .col-xlg-#{$i} { grid-column: span #{$i}; }
     }
   }
 }

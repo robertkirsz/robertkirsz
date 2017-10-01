@@ -69,6 +69,7 @@ export default {
 
 <style lang="scss">
   @import "styles/main";
+  @import "styles/variables";
 
   #app {
     @extend %full-size;
@@ -90,6 +91,7 @@ export default {
     @extend %absolute;
     @extend %full-size;
     @include flex(column, nowrap, center, center);
+    background: $grey;
     &:after {
       content: "";
       display: block;

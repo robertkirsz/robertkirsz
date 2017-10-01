@@ -118,9 +118,9 @@
 
   .works-page {
     justify-content: flex-start;
-    background: $red;
+    background: $grey;
     &:after {
-      background: linear-gradient(to top, $red 25%, transparent);
+      background: linear-gradient(to top, $grey 25%, transparent);
     }
     .content {
       @include flex(row, wrap);

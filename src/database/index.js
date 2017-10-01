@@ -10,6 +10,7 @@ export default {
     { name: 'jQuery', icon: 'jquery.png', level: 'primary' },
     { name: 'SASS', icon: 'sass.png', level: 'primary' },
     { name: 'Bootstrap', icon: 'bootstrap.png', level: 'primary' },
+    { name: 'styled-components', icon: 'styled-components.png', level: 'primary' },
     { name: 'Firebase', icon: 'firebase.png', level: 'secondary' },
     { name: 'React Native', icon: 'react-native.png', level: 'secondary' },
     { name: 'Git', icon: 'git.png', level: 'secondary' },

@@ -1,15 +1,26 @@
 <template>
-  <div class="skill col-xs-6 col-md-4" :class="skill.level">
+  <div class="skill col-xs-6 col-md-4 col-xlg-3" :class="skill.level" :style="`opacity: ${loaded ? 1 : 0}`">
     <img :src="`../../static/skills/${skill.icon}`" :alt="`Logo ${skill.name}`" />
     <p>{{ skill.name }}</p>
   </div>
 </template>
 
 <script>
+  const preload = src => new Promise(resolve => {
+    const img = new Image()
+    img.src = src
+    img.onload = resolve
+  })
+
   export default {
     name: 'SkillItem',
     props: {
       skill: Object
+    },
+    data: () => ({ loaded: false }),
+    async mounted () {
+      await preload(`../../static/skills/${this.skill.icon}`)
+      this.loaded = true
     }
   }
 </script>
@@ -25,6 +36,8 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+
+    transition: opacity 1s;
 
     @include medium {
       img:hover + p {
