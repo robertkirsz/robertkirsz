@@ -5,20 +5,20 @@
 <script>
 export default {
   name: 'KeyboardHandler',
-  data() {
+  data () {
     return {
       key: null,
       prevRouteName: null
     }
   },
-  mounted() {
+  mounted () {
     window.addEventListener('keyup', this.handleKeyDown)
   },
-  beforeDestroy() {
+  beforeDestroy () {
     window.removeEventListener('keyup', this.handleKeyDown)
   },
   methods: {
-    handleKeyDown({ key }) {
+    handleKeyDown ({ key }) {
       if (!['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'].includes(key)) return
 
       const { name, meta: { routeIndex } } = this.$route
