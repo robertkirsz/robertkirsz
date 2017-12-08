@@ -6,11 +6,7 @@
 </template>
 
 <script>
-  const preload = src => new Promise(resolve => {
-    const img = new Image()
-    img.src = src
-    img.onload = resolve
-  })
+  import { preload } from '../utils'
 
   export default {
     name: 'SkillItem',

@@ -37,9 +37,7 @@ export default {
   },
   methods: {
     updateTitle () {
-      document.title = this.showPageNavigation
-        ? `robertkirsz - ${_capitalize(this.$route.name)}`
-        : 'robertkirsz'
+      document.title = this.showPageNavigation ? `robertkirsz - ${_capitalize(this.$route.name)}` : 'robertkirsz'
     },
     getAnimationName (to, from) {
       if (from.name === 'Navigation' && to.meta.routeIndex > 0) {
@@ -49,12 +47,8 @@ export default {
       } else {
         this.routerAnimationName =
           to.meta.routeIndex < 1
-            ? to.meta.routeIndex < from.meta.routeIndex
-              ? 'router-animation-top'
-              : 'router-animation-bottom'
-            : to.meta.routeIndex < from.meta.routeIndex
-              ? 'router-animation-left'
-              : 'router-animation-right'
+            ? to.meta.routeIndex < from.meta.routeIndex ? 'router-animation-top' : 'router-animation-bottom'
+            : to.meta.routeIndex < from.meta.routeIndex ? 'router-animation-left' : 'router-animation-right'
       }
     }
   },

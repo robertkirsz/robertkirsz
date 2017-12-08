@@ -36,9 +36,7 @@ export default {
         case 'ArrowRight':
           if (name === 'Navigation' || routeIndex < 1) break
 
-          const nextRoute = routes.find(
-            route => route.meta && route.meta.routeIndex === routeIndex + 1
-          )
+          const nextRoute = routes.find(route => route.meta && route.meta.routeIndex === routeIndex + 1)
 
           if (nextRoute) this.$router.push({ name: nextRoute.name })
           this.prevRouteName = name
@@ -46,9 +44,7 @@ export default {
         case 'ArrowLeft':
           if (name === 'Navigation' || routeIndex < 2) break
 
-          const prevRoute = routes.find(
-            route => route.meta.routeIndex === routeIndex - 1
-          )
+          const prevRoute = routes.find(route => route.meta.routeIndex === routeIndex - 1)
 
           if (prevRoute) this.$router.push({ name: prevRoute.name })
           this.prevRouteName = name
